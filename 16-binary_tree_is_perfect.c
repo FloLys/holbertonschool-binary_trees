@@ -10,18 +10,16 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	if (1 == binary_tree_is_full(tree))
-		if (0 == binary_tree_balance(tree))
+	if (binary_tree_is_full(tree) == 1)
+		if (binary_tree_balance(tree) == 0)
 			return (1);
 	return (0);
 }
-
 /**
  *binary_tree_balance - measures the level balance of a binary tree
  *@tree: pointer to root node
  *Return: lvl of balance
  */
-
 int binary_tree_balance(const binary_tree_t *tree)
 {
 	int counter_l = 0, counter_r = 0;
@@ -29,40 +27,33 @@ int binary_tree_balance(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	counter_l = binary_tree_balance_left(tree);
-	counter_r = binary_tree_balance_right(tree);
+	counter_l = binary_tree_height(tree->left);
+
+	counter_r = binary_tree_height(tree->right);
+
 	return (counter_l - counter_r);
 }
 
 /**
- *binary_tree_balance_right - aux function, checkes only far right.
- *@tree: Pointer to tree.
- *Return: height of far right.
+ *binary_tree_height - measures the height of a binary tree
+ *@tree: pointer to root node
+ *Return: 0 if tree is NULL
  */
-
-int binary_tree_balance_right(const binary_tree_t *tree)
+size_t binary_tree_height(const binary_tree_t *tree)
 {
-	int counter_r = 0;
+	size_t counter_r = 0, counter_l = 0;
 
-	if (tree->right != NULL)
-		counter_r = 1 + binary_tree_balance_right(tree->right);
+	if (tree == NULL)
+		return (0);
 
-	return (counter_r);
-}
+	counter_l = 1 + binary_tree_height(tree->left);
 
-/**
- *binary_tree_balance_left - aux function, checkes only far left.
- *@tree: Pointer to tree.
- *Return: height of far left.
- */
+	counter_r = 1 + binary_tree_height(tree->right);
 
-int binary_tree_balance_left(const binary_tree_t *tree)
-{
-	int counter_l = 0;
-
-	if (tree->left != NULL)
-		counter_l = 1 + binary_tree_balance_left(tree->left);
-	return (counter_l);
+	if (counter_r > counter_l)
+		return (counter_r);
+	else
+		return (counter_l);
 }
 
 /**
