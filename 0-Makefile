@@ -1,5 +1,0 @@
-GCC: gcc -Wall -pedantic -Werror -Wextra -std=gnu89
-CC: $(wildcard *.c)
-
-all: binary_tree.h
-	$(GCC) $(CC)

@@ -4,6 +4,7 @@
  *@tree: Pointer to tree.
  *Return: 1 for perfect, 0 otherwise
  */
+
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	if (!tree)
@@ -11,7 +12,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 
 	if (1 == binary_tree_is_full(tree))
 		if (0 == binary_tree_balance(tree))
-			return(1);
+			return (1);
 	return (0);
 }
 
@@ -31,7 +32,6 @@ int binary_tree_balance(const binary_tree_t *tree)
 	counter_l = binary_tree_balance_left(tree);
 	counter_r = binary_tree_balance_right(tree);
 	return (counter_l - counter_r);
-
 }
 
 /**
