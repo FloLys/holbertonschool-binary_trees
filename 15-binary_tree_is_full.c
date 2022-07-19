@@ -8,6 +8,9 @@ int binary_tree_is_full(const binary_tree_t *tree)
 {
 	int retorno = 0;
 
+	if (!tree)
+		return (0);
+
 	retorno = binary_tree_is_full_aux(tree);
 
 	if (retorno != 0)
