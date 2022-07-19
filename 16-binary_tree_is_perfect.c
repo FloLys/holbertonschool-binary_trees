@@ -55,7 +55,23 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	else
 		return (counter_l);
 }
+/**
+ *binary_tree_depth - measures the depth of a binary tree
+ *@tree: pointer to root node
+ *Return: 0 if tree is NULL
+ */
+size_t binary_tree_depth(const binary_tree_t *tree)
+{
+	size_t counter = 0;
 
+	if (tree == NULL)
+		return (0);
+
+	if (tree->parent != NULL)
+		counter = 1 + binary_tree_depth(tree->parent);
+
+	return (counter);
+}
 /**
  *binary_tree_is_full - checks if a BT is full.
  *@tree: Pointer to tree.
@@ -85,8 +101,9 @@ int binary_tree_is_full(const binary_tree_t *tree)
 
 size_t binary_tree_is_full_aux(const binary_tree_t *tree)
 {
-	size_t counter = 0;
+	size_t counter = 0, depth = 0;
 
+	depth = binary_tree_depth(tree);
 	if (tree == NULL)
 		return (0);
 
@@ -96,10 +113,10 @@ size_t binary_tree_is_full_aux(const binary_tree_t *tree)
 	if (tree->right != NULL)
 		counter += binary_tree_is_full_aux(tree->right);
 
-	if (tree->left != NULL && tree->right == NULL)
-		return (counter + 1);
-	else if (tree->left == NULL && tree->right != NULL)
-		return (counter + 1);
+	if (tree->left == NULL && tree->left == NULL)
+		return (depth == counter + 1);
+	else if (tree->left == NULL || tree->right == NULL)
+		return (0);
 	else
 		return (counter);
 }
