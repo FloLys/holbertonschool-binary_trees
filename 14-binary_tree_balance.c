@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+#include <stdio.h>
 /**
  *binary_tree_balance - measures the level balance of a binary tree
  *@tree: pointer to root node
