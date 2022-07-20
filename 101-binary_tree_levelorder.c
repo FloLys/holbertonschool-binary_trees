@@ -22,11 +22,13 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	}
 }
 /**
-*level_order_traversal_aux - goes through a binary tree using post-order traverse.
+*level_order_traversal_aux - goes through a binary tree, post-order traversal
  *@tree: pointer to root node.
  *@func: Pointer to function to call in each node.
+ *@level: current level.
 */
-void level_order_traversal_aux(const binary_tree_t *tree, void (*func)(int), size_t level)
+void level_order_traversal_aux(
+		const binary_tree_t *tree, void (*func)(int), size_t level)
 {
 	if (level == 1)
 		func(tree->n);
