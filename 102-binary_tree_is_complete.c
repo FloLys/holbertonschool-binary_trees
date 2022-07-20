@@ -16,7 +16,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (retorno > 1 || retorno < 0)
 		return (0);
 
-	retorno = binary_tree_perfect(tree);
+	retorno = binary_tree_is_perfect(tree);
 
 	if (retorno > 1 || retorno < 0)
 		return (0);
