@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 /**
- *binary_tree_is complete - measures the level balance of a binary tree
+ *binary_tree_is_complete - measures the level balance of a binary tree
  *@tree: pointer to root node
  *Return: 1 for complete tree, 0 otherwise.
  */
@@ -15,12 +15,6 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 
 	if (retorno > 1 || retorno < 0)
 		return (0);
-
-	retorno = binary_tree_is_perfect(tree);
-
-	if (retorno > 1 || retorno < 0)
-		return (0);
-
 
 	return (1);
 }
@@ -66,25 +60,3 @@ size_t binary_tree_height(const binary_tree_t *tree)
 		return (counter_l);
 }
 
-/**
- *binary_tree_is_perfect - checks if a BT is perfect.
- *@tree: Pointer to tree.
- *Return: 1 for perfect, 0 otherwise
- */
-int binary_tree_is_perfect(const binary_tree_t *tree)
-{
-	if (tree == NULL)
-		return (0);
-
-	if (!tree->left && tree-> right)
-		return (0);
-
-	if (!tree->left && !tree->right)
-		return (1);
-
-	if (binary_tree_height(tree->left) == binary_tree_height(tree->right))
-		return (binary_tree_is_perfect(tree->left) &&
-				binary_tree_is_perfect(tree->right));
-
-	return (0);
-}
