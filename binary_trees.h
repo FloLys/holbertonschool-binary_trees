@@ -60,7 +60,7 @@ binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 int binary_tree_is_bst(const binary_tree_t *tree);
 
 
-
+void level_order_traversal_aux(const binary_tree_t *tree, void (*func)(int), size_t level);
 int power(int base, int exponent);
 int binary_tree_balance_right(const binary_tree_t *tree);
 int binary_tree_balance_left(const binary_tree_t *tree);
