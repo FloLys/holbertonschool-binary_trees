@@ -1,10 +1,20 @@
 #include "binary_trees.h"
 /**
- *binary_tree_levelorder - Binary tree travel level-order traversal.
+ *bst_search - Search for a value.
  *@tree: pointer to root node.
- *@func: Pointer to function to call in each node.
+ *@value: Key to look for.
+ *Return: Pointer to node
  */
-void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
+bst_t *bst_search(const bst_t *tree, int value)
 {
-		return;
+	if (!tree)
+		return (NULL);
+
+	if (tree->n == value)
+		return (tree);
+	if (tree->left)
+		bst_search(tree->left);
+	if (tree->right)
+		bst_search(tree->right);
+	return (NULL);
 }
